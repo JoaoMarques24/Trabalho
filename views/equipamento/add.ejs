@@ -1,0 +1,120 @@
+<%- include('../cabecalho') -%>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>EQUIPAMENTO</h2>
+        </div>
+        <!-- Horizontal Layout -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            CADASTRAR EQUIPAMENTO
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="cor">Cor</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="cor" id="cor" class="form-control"
+                                                placeholder="Cor do Equipamento">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="material">Material</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="material" id="material" class="form-control"
+                                                placeholder="material">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="foto">Foto do Equipamento</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="file" required name="foto" id="foto" class="form-control"
+                                                placeholder="Foto do Equipamento">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="estilo">Estilo</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="estilo">
+                                                <% Estilo.forEach(function(estilo){ %>
+                                                <option value="<%=estilo._id%>"><%=estilo.nome%></option>
+                                                <%});%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="marca">Marca</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="marca">
+                                                <% Marca.forEach(function(marca){ %>
+                                                <option value="<%=marca._id%>"><%=marca.nome%></option>
+                                                <%});%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="qualidade">Qualidade</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="qualidade" multiple>
+                                                <% Qualidade.forEach(function(qualidade){ %>
+                                                <option value="<%=qualidade._id%>"><%=qualidade.qualidade%></option>
+                                                <%});%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                    <button type="clear" class="btn btn-primary m-t-15 waves-effect">Limpar</button>
+                                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">Cadastrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Horizontal Layout -->
+    </div>
+</section>
+<%- include('../rodape') -%>

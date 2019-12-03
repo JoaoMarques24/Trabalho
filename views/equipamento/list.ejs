@@ -1,0 +1,92 @@
+<%- include('../cabecalho') -%>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>EQUIPAMENTO</h2>
+        </div>
+        <!-- Hover Rows -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <form action="/equipamento" method="POST">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="pesquisa" class="form-control"
+                                                placeholder="Pesquisando..">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" style="margin-top:0px;" class="btn btn-primary m-t-15 waves-effect">Pesquisa</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="body table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>COR</th>
+                                    <th>MATERIAL</th>
+                                    <th>ESTILO</th>
+                                    <th>MARCA</th>
+                                    <th>QUALIDADE</th>
+                                    <th>FOTO</th>
+                                    <th>EDITA</th>
+                                    <th>DELETA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% Equipamento.forEach(function(equipamento){ %>
+                                <tr>
+                                    <th scope="row"><%=equipamento._id%></th>
+                                    <td><%=equipamento.cor%></td>
+                                    <td><%=equipamento.material%></td>
+                                    <td><%=equipamento.estilo.nome%></td>
+                                    <td><%=equipamento.marca.nome%></td>
+                                    <td>
+                                        <% equipamento.qualidade.forEach(function(qualidade){ %>
+                                            <%=qualidade.qualidade%><br>
+                                        <%});%><br>
+                                    </td>
+                                    <td>
+                                        <img style="height: 50px;" src="/arquivos/<%=equipamento.foto%>">
+                                    </td>
+                                    <td>
+                                        <a href="/equipamento/edit/<%=equipamento._id%>"
+                                            class="btn btn-warning btn-circle-lg waves-effect waves-circle waves-float">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/equipamento/del/<%=equipamento._id%>"
+                                            class="btn btn-danger btn-circle-lg waves-effect waves-circle waves-float">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <%});%>
+                            </tbody>
+                            <tfoot>
+                                <% if(typeof msg !== "undefined"){ %>
+                                <div class="alert bg-green alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <%=msg%>
+                                </div>
+                                <% } %>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Hover Rows -->
+
+    </div>
+</section>
+<%- include('../rodape') -%>
